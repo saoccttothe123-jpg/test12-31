@@ -1,3 +1,9 @@
+const { Player } = require("discord-player");
+const { DefaultExtractors } = require("@discord-player/extractor");
+
+client.player = new Player(client);
+
+await client.player.extractors.loadMulti(DefaultExtractors);
 require("dotenv").config();
 const { useHooks } = require("zihooks");
 const path = require("node:path");
