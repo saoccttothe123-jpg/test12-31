@@ -164,16 +164,21 @@ async function handlePlayRequest(interaction, query, lang, options, player) {
 
 		if (!Player.connection) await Player.connect(interaction?.member?.voice?.channel ?? options?.voice);
 		let reqPlayOK = false;
-		if (!!query) reqPlayOK = await Player.play(query, interaction?.user);
+	if (!query) throw new Error("Query is empty");
 
-		if (!reqPlayOK) throw new Error("Play request failed");
+const reqPlayOK = await Player.play(query, interaction?.user);
+
+if (!reqPlayOK) {
+    throw new Error("Player.play returned false");
+}
 
 		await cleanUpInteraction(interaction, player);
 		logger.debug("Track played successfully");
 	} catch (e) {
-		console.log(e);
-		logger.error(`Error in handlePlayRequest:  ${JSON.stringify(e)}`);
-		await handleError(interaction, lang);
+    console.error("Play Error:", e);
+    logger.error(`Error in handlePlayRequest: ${e.message}`);
+    await handleError(interaction, lang);
+}
 	}
 }
 
