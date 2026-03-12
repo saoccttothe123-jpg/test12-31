@@ -10,11 +10,19 @@ const logger = useHooks.get("logger");
 let tempmess = null;
 //====================================================================//
 
-module.exports.data = {
-	name: "Search",
-	type: "player",
-};
+module.exports = {
+    data: {
+        name: "Search",
+        type: "player",
+    },
 
+    async execute(...args) {
+        const manager = require("ziplayer").getManager();
+        const query = args[2];
+
+        return await manager.search(query);
+    }
+};
 //====================================================================//
 
 function validURL(str) {
