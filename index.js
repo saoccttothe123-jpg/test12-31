@@ -21,7 +21,6 @@ const path = require("node:path");
 const { GiveawaysManager } = require("discord-giveaways");
 
 const { StartupManager } = require("./startup");
-const { Client, GatewayIntentBits, Partials } = require("discord.js");
 const readline = require("readline");
 
 //music player
