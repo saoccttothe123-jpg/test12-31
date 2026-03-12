@@ -163,13 +163,12 @@ async function handlePlayRequest(interaction, query, lang, options, player) {
 		});
 
 		if (!Player.connection) await Player.connect(interaction?.member?.voice?.channel ?? options?.voice);
-		let reqPlayOK = false;
 	if (!query) throw new Error("Query is empty");
 
 const reqPlayOK = await Player.play(query, interaction?.user);
 
 if (!reqPlayOK) {
-    throw new Error("Player.play returned false");
+	throw new Error("Player.play returned false");
 }
 
 		await cleanUpInteraction(interaction, player);
