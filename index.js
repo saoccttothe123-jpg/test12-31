@@ -28,8 +28,7 @@ const { default: PlayerManager } = require("ziplayer");
 const { TTSPlugin, YTSRPlugin, SoundCloudPlugin, YouTubePlugin, SpotifyPlugin, AttachmentsPlugin } = require("@ziplayer/plugin");
 const { lyricsExt, voiceExt } = require("@ziplayer/extension");
 const { YTexec } = require("@ziplayer/ytexecplug");
-const client = new Client({
-	rest: [{ timeout: 60_000 }],
+
 	intents: [
 		GatewayIntentBits.Guilds, // for guild related things
 		GatewayIntentBits.GuildVoiceStates, // for voice related things
